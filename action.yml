@@ -1,0 +1,31 @@
+name: "Itch.io - Publish"
+description: "Publish releases to Itch.io"
+author: KikimoraGames
+runs:
+  using: docker
+  image: Dockerfile
+branding:
+  icon: upload-cloud
+  color: red
+inputs:
+    butlerApiKey:
+      description: 'Butler API Key'
+      required: true
+    gameData:
+        description: 'Directory or .zip file of the game data. Zip files are slower to upload.'
+        required: true
+    itchUsername:
+        description: 'Itch.io username of the game owner. e.g. in finji/overland this would be finji.'
+        required: true
+    itchGameId:
+        description: "Itch.io id of the game. e.g. in finji/overland this would be overland."
+        required: true
+    buildChannel:
+        description: "Channel name of the game: https://itch.io/docs/butler/pushing.html#channel-names"
+        required: true
+    buildNumber:
+        description: "Optional build number, use to supply your own build version instead of using itch's versioning"
+        required: false
+    buildNumberFile:
+        description: "Optional build number file path, use to supply your own build version instead of using itch's versioning. The file should contain a single line with the version or build number, in UTF-8 without BOM."
+        required: false
